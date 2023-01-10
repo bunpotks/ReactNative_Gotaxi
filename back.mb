@@ -1,0 +1,109 @@
+// if (Platform.OS == 'android') {
+        //   BackgroundGeolocation.on('authorization', status => {
+        //     console.log(
+        //       '[INFO] BackgroundGeolocation authorization status: ' + status,
+        //     );
+        //     if (status !== BackgroundGeolocation.AUTHORIZED) {
+        //       // we need to set delay or otherwise alert may not be shown
+        //       setTimeout(
+        //         () =>
+        //           Alert.alert(
+        //             'App requires location tracking permission',
+        //             'Would you like to open app settings?',
+        //             [
+        //               {
+        //                 text: 'Yes',
+        //                 onPress: () => BackgroundGeolocation.showAppSettings(),
+        //               },
+        //               {
+        //                 text: 'No',
+        //                 onPress: () => console.log('No Pressed'),
+        //                 style: 'cancel',
+        //               },
+        //             ],
+        //           ),
+        //         1000,
+        //       );
+        //     }
+        //   });
+        // }
+
+        // BackgroundGeolocation.removeAllListeners();
+
+        // BackgroundGeolocation.configure({
+        //   desiredAccuracy: BackgroundGeolocation.MEDIUM_ACCURACY, //MEDIUM_ACCURACY // HIGH_ACCURACY //
+        //   stationaryRadius: 0,
+        //   distanceFilter: 0,
+        //   notificationsEnabled: true,
+        //   notificationTitle: 'กำลังรับส่งผู้โดยสาร',
+        //   notificationText: 'กำลังรับส่งผู้โดยสารโปรดอย่าปิดแอป',
+        //   maxLocations: 10000,
+        //   syncThreshold: 1000,
+        //   debug: false,
+        //   startOnBoot: true,
+        //   startForeground: true,
+        //   stopOnStillActivity: false,
+        //   stopOnTerminate: false,
+        //   locationProvider: BackgroundGeolocation.DISTANCE_FILTER_PROVIDER, //RAW_PROVIDER DISTANCE_FILTER_PROVIDER  ACTIVITY_PROVIDER
+        //   interval: 10000,
+        //   fastestInterval: 10000,
+        //   activitiesInterval: 20000,
+        //   url: '',
+        //   syncUrl: '',
+        // });
+
+        // BackgroundGeolocation.checkStatus(status => {
+        //   console.log(
+        //     '[INFO] BackgroundGeolocation service is running',
+        //     status.isRunning,
+        //   );
+        //   console.log('check');
+        //   if (response.statusActive) {
+        //     AsyncStorage.setItem(
+        //       '@onTravel',
+        //       response.dataActive.gmm_booking_nbr,
+        //     );
+
+        //     if (Platform.OS == 'android') {
+        //       startBackground();
+        //       // BackgroundGeolocation.headlessTask(async event => {
+        //       //   let a = await AsyncStorage.getItem('@onTravel');
+        //       //   const login = await AsyncStorage.getItem('@login');
+        //       //   const loginUser = login ? JSON.parse(login) : undefined;
+
+        //       //   if (loginUser['gmm_emp_type'] == 'Taxi') {
+        //       //     $mode = 'updatePosition';
+        //       //   } else {
+        //       //     $mode = 'updatePositionCg';
+        //       //   }
+        //       //   if (event.name === 'location' || event.name === 'stationary') {
+        //       //     let req = JSON.stringify({
+        //       //       key: $mode,
+        //       //       position: {
+        //       //         latitude: event.params.latitude,
+        //       //         longitude: event.params.longitude,
+        //       //       },
+        //       //       booking: {gmm_booking_nbr: a},
+        //       //     });
+        //       //     var xhr = new XMLHttpRequest();
+        //       //     xhr.open('POST', url + 'monitor.php');
+        //       //     xhr.setRequestHeader('Content-Type', 'application/json');
+        //       //     xhr.send(req);
+        //       //   }
+        //       // });
+        //       // BackgroundGeolocation.start(); //triggers start on start event
+        //     } else {
+        //       startBackground();
+        //       // BackgroundGeolocation.start(); //triggers start on start event
+        //     }
+        //   } else {
+        //     stopBackground();
+        //   }
+        // });
+
+        // if (response.statusActive) {
+        //   AsyncStorage.setItem(
+        //     '@onTravel',
+        //     response.statusActive.gmm_booking_nbr,
+        //   );
+        // }

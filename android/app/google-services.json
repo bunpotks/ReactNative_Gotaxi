@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "223556988652",
+    "project_id": "go-mamma-uat",
+    "storage_bucket": "go-mamma-uat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223556988652:android:77416922bb88f239407fc9",
+        "android_client_info": {
+          "package_name": "com.doublem.gomamma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223556988652-tarbumorjhh3lp9v8rmkq2pa5oq136ea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSa7FNwdTJihpX3u8_DR_QNvjUn8CiIRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223556988652-tarbumorjhh3lp9v8rmkq2pa5oq136ea.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "223556988652-065ahnlagjlms4m2ftu4p4lokleh8tri.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.doublem.gomamma"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223556988652:android:333ec038c2d4b3cb407fc9",
+        "android_client_info": {
+          "package_name": "com.doublem.gotaxi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223556988652-tarbumorjhh3lp9v8rmkq2pa5oq136ea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSa7FNwdTJihpX3u8_DR_QNvjUn8CiIRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223556988652-tarbumorjhh3lp9v8rmkq2pa5oq136ea.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "223556988652-065ahnlagjlms4m2ftu4p4lokleh8tri.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.doublem.gomamma"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
