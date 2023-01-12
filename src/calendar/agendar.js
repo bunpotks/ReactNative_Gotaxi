@@ -34,16 +34,12 @@ import moment from 'moment';
 import Loader from '../center/Loader';
 import {url as urls} from '../center/url';
 import {ScrollView} from 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {SafeAreaView} from 'react-native-safe-area-context';
 const url = urls.url;
 const STORAGE_KEY = '@login';
 
-
-
 const RANGE = 24;
 const initialDate = '2022-01-09';
-
-
 
 const testIDs = {
   menu: {
@@ -114,6 +110,7 @@ export default class AgendaScreen extends Component {
     itemDetail: [],
     agendaModal: false,
     disabled_days: [],
+    maxDate: '',
   };
 
   myuser = async () => {
@@ -176,7 +173,6 @@ export default class AgendaScreen extends Component {
     fetch(url + 'agenda.php', requestOptions)
       .then(response => response.json())
       .then(response => {
-        console.log(response);
         this.setState({...this.state, disabled_days: response.dayoff});
         let newArr = Object.assign(this.state.items, response.data);
         this.setState({...this.state, loader: false, items: newArr});
@@ -192,9 +188,18 @@ export default class AgendaScreen extends Component {
     const willFocusSubscription = this.props.navigation.addListener(
       'focus',
       () => {
-        // fetchData();
         this.getAcitivity();
         this.myuser();
+
+
+
+        var d = new Date(); // วันนี้
+        d.setMonth(d.getMonth() + 6); // สำหรับเดือน
+        console.log(d.toISOString().split('T')[0])
+
+        this.setState({
+          maxDate: d.toISOString().split('T')[0]
+        });
       },
     );
 
@@ -220,149 +225,158 @@ export default class AgendaScreen extends Component {
   modalAgenda = () => {
     return (
       <Modal
-      statusBarTranslucent={true}
+        statusBarTranslucent={true}
         onBackButtonPress={() => this.setState({agendaModal: false})}
         visible={this.state.agendaModal}
         animationInTiming={700}
         animationOutTiming={700}
         style={[styles.containerModal]}>
-          <SafeAreaView style={{flex:1}}>
-
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingHorizontal: 20,
-            // backgroundColor: '#FFC40C',
-          }}>
-          <Text style={{fontSize: 30}}>รายละเอียดงาน</Text>
-          <TouchableOpacity
-            onPress={() => {
-              this.setState({agendaModal: false});
+        <SafeAreaView style={{flex: 1}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingHorizontal: 20,
+              // backgroundColor: '#FFC40C',
             }}>
-            <Avatar.Icon
-              size={50}
-              style={{backgroundColor: 'white'}}
-              icon="close"
-            />
-          </TouchableOpacity>
-        </View>
+            <Text style={{fontSize: 30}}>รายละเอียดงาน</Text>
+            <TouchableOpacity
+              onPress={() => {
+                this.setState({agendaModal: false});
+              }}>
+              <Avatar.Icon
+                size={50}
+                style={{backgroundColor: 'white'}}
+                icon="close"
+              />
+            </TouchableOpacity>
+          </View>
 
-        <View style={{backgroundColor: 'white', paddingHorizontal: 20, height: '100%'}}>
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-            showsHorizontalScrollIndicator={false}>
-            {this.state.itemDetail ? (
-              <View>
-                {this.state.itemDetail.map((item, key) => (
-                  <View key={key}>
-                    <Divider style={{marginVertical: 5}} />
+          <View
+            style={{
+              backgroundColor: 'white',
+              paddingHorizontal: 20,
+              height: '100%',
+            }}>
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              showsHorizontalScrollIndicator={false}>
+              {this.state.itemDetail ? (
+                <View>
+                  {this.state.itemDetail.map((item, key) => (
+                    <View key={key}>
+                      <Divider style={{marginVertical: 5}} />
 
-                    {item.types == 'BOOKING' ? (
-                      <TouchableRipple
-                        style={{
-                          backgroundColor: 'white',
-                          flex: 4,
-                          margin: 5,
-                          padding: 20,
-                          backgroundColor: item.color,
-                          borderRadius: 10,
-                          borderLeftColor: item.colorLeft,
-                          borderLeftWidth: 10,
-                        }}
-                        onPress={() => {
-                          this.setState({...this.state, agendaModal: false});
-                          if (this.state.user.gmm_emp_type == 'Taxi') {
-                            this.props.navigation.navigate('Bookingdetail', {
-                              trip: item,
-                            });
-                          } else {
-                            this.props.navigation.navigate('BookingdetailCg', {
-                              trip: item,
-                            });
-                          }
-                        }}>
+                      {item.types == 'BOOKING' ? (
+                        <TouchableRipple
+                          style={{
+                            backgroundColor: 'white',
+                            flex: 4,
+                            margin: 5,
+                            padding: 20,
+                            backgroundColor: item.color,
+                            borderRadius: 10,
+                            borderLeftColor: item.colorLeft,
+                            borderLeftWidth: 10,
+                          }}
+                          onPress={() => {
+                            this.setState({...this.state, agendaModal: false});
+                            if (this.state.user.gmm_emp_type == 'Taxi') {
+                              this.props.navigation.navigate('Bookingdetail', {
+                                trip: item,
+                              });
+                            } else {
+                              this.props.navigation.navigate(
+                                'BookingdetailCg',
+                                {
+                                  trip: item,
+                                },
+                              );
+                            }
+                          }}>
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              alignItems: 'center',
+                            }}>
+                            <View style={{flex: 1, margin: 2}}>
+                              <Text style={{fontSize: 20}}>
+                                {item.gmm_booking_travel_start.substring(11)} น.
+                              </Text>
+                            </View>
+
+                            <View style={{flex: 2}}>
+                              <Text>
+                                {item.gmm_booking_travel_start.substring(11)} -{' '}
+                                {item.gmm_booking_travel_end.substring(11)} น.
+                              </Text>
+
+                              <Text style={{color: 'gray'}}>
+                                {item.gmm_booking_product_name}
+                              </Text>
+
+                              <Text style={{color: 'gray'}}>
+                                คุณ{' '}
+                                {item.gmm_passenger_fname +
+                                  ' ' +
+                                  item.gmm_passenger_lname}
+                              </Text>
+
+                              <Text>{item.gmm_booking_nbr}</Text>
+                            </View>
+                          </View>
+                        </TouchableRipple>
+                      ) : (
                         <View
-                          style={{flexDirection: 'row', alignItems: 'center'}}>
+                          style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            padding: 10,
+                          }}>
                           <View style={{flex: 1, margin: 2}}>
                             <Text style={{fontSize: 20}}>
-                              {item.gmm_booking_travel_start.substring(11)} น.
+                              {item.gmm_leave_time} น.
                             </Text>
                           </View>
 
                           <View style={{flex: 2}}>
                             <Text>
-                              {item.gmm_booking_travel_start.substring(11)} -{' '}
-                              {item.gmm_booking_travel_end.substring(11)} น.
+                              {item.gmm_leave_time} - {item.gmm_leave_time_to}{' '}
+                              น.
                             </Text>
 
                             <Text style={{color: 'gray'}}>
-                              {item.gmm_booking_product_name}
+                              {item.gmm_leave_type}
                             </Text>
 
-                            <Text style={{color: 'gray'}}>
-                              คุณ{' '}
-                              {item.gmm_passenger_fname +
-                                ' ' +
-                                item.gmm_passenger_lname}
+                            <Text style={{color: item.color}}>
+                              {item.gmm_leave_status}
                             </Text>
-
-                            <Text>{item.gmm_booking_nbr}</Text>
                           </View>
                         </View>
-                      </TouchableRipple>
-                    ) : (
-                      <View
-                        style={{
-                          flexDirection: 'row',
-                          alignItems: 'center',
-                          padding: 10,
-                        }}>
-                        <View style={{flex: 1, margin: 2}}>
-                          <Text style={{fontSize: 20}}>
-                            {item.gmm_leave_time} น.
-                          </Text>
-                        </View>
+                      )}
 
-                        <View style={{flex: 2}}>
-                          <Text>
-                            {item.gmm_leave_time} - {item.gmm_leave_time_to} น.
-                          </Text>
-
-                          <Text style={{color: 'gray'}}>
-                            {item.gmm_leave_type}
-                          </Text>
-
-                          <Text style={{color: item.color}}>
-                            {item.gmm_leave_status}
-                          </Text>
-                        </View>
-                      </View>
-                    )}
-
-                    <Divider style={{marginVertical: 5}} />
-                  </View>
-                ))}
-              </View>
-            ) : (
-              <Text>ไม่มีรายการในวันนี้</Text>
-            )}
-          </ScrollView>
-        </View>
+                      <Divider style={{marginVertical: 5}} />
+                    </View>
+                  ))}
+                </View>
+              ) : (
+                <Text>ไม่มีรายการในวันนี้</Text>
+              )}
+            </ScrollView>
+          </View>
         </SafeAreaView>
-
       </Modal>
     );
   };
   pressDay = e => {
-    console.log(
-      this.getDaysInMonth(
-        moment().month(),
-        moment().year(),
-        this.state.disabled_days,
-      ),
-    );
-    console.log('111');
+    // console.log(
+    //   this.getDaysInMonth(
+    //     moment().month(),
+    //     moment().year(),
+    //     this.state.disabled_days,
+    //   ),
+    // );
     this.setState({
       ...this.state,
       agendaModal: true,
@@ -381,7 +395,10 @@ export default class AgendaScreen extends Component {
         <CalendarList
           onDayPress={this.pressDay}
           firstDay={1}
-          maxDate={'2024-12-31'}
+          // minDate={'2023-05-10'}
+          // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
+          // maxDate={'2025-05-25'}
+          maxDate={this.state.maxDate}
           markedDates={this.state.items}
           // Callback which gets executed when visible months change in scroll view. Default = undefined
           onVisibleMonthsChange={this.onMonthChange}
@@ -393,13 +410,9 @@ export default class AgendaScreen extends Component {
           // Enable or disable vertical scroll indicator. Default = false
           showScrollIndicator={true}
         />
-
-        
       </View>
     );
   }
-
- 
 
   renderItem(item) {
     return (

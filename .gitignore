@@ -2,6 +2,10 @@
 #
 .DS_Store
 
+# Gitfile
+.*
+!/.gitignore
+
 # Xcode
 #
 build/
@@ -60,3 +64,10 @@ buck-out/
 
 # Ignore Gradle build output directory
 build
+
+
+# Libdata
+/src/center
+/patches
+/android
+/ios
