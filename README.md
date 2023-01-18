@@ -7,7 +7,7 @@ Go Mamma (Go-Mama) taxi service for elderly people Travel services that are safe
 
 
 
-![](https://github.com/noteyn51/Gomamma/blob/main/screenshot/intro.gif)
+![](https://github.com/noteyn51/Gotaxi/blob/main/screenshot/intro.gif)
 
 
 
