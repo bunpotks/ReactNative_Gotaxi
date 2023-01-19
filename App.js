@@ -14,27 +14,12 @@ import {
   AppRegistry,
   PermissionsAndroid,
 } from 'react-native';
-// import BackgroundGeolocation from '@mauron85/react-native-background-geolocation';
-import BackgroundGeolocation from '@hariks789/react-native-background-geolocation';
 import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 
 import SplashScreen from 'react-native-splash-screen';
-import {createSharedElementStackNavigator} from 'react-navigation-shared-element';
 
-import {
-  Card,
-  Button,
-  Title,
-  Paragraph,
-  Checkbox,
-  TouchableRipple,
-  Banner,
-  useTheme,
-  Portal,
-  Dialog,
-  IconButton,
-} from 'react-native-paper';
+
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -43,7 +28,6 @@ import {LocaleConfig} from 'react-native-calendars';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ToastProvider} from 'react-native-toast-notifications';
 import codePush from 'react-native-code-push';
-import LottieView from 'lottie-react-native';
 
 import {NativeBaseProvider, extendTheme} from 'native-base';
 import LoginScreen from './src/Login';
@@ -71,7 +55,6 @@ import BookingdetailCg from './src/monitorCg/bookingdetail';
 
 import PushNotification from 'react-native-push-notification';
 import messaging from '@react-native-firebase/messaging';
-import BookScreen from './src/tabmenus/book';
 import ProfileScreen from './src/Profile';
 
 import SettingNotificationScreen from './src/setting/settingNotification';
