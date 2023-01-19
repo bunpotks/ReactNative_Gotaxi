@@ -1,25 +1,9 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  Platform,
-  Alert,
-  TouchableOpacity,
-  AppState,
-  AppRegistry,
-  PermissionsAndroid,
-} from 'react-native';
+import React, {useState, useRef} from 'react';
+import {Text, View, Platform, AppState} from 'react-native';
 import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 
 import SplashScreen from 'react-native-splash-screen';
-
-
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -720,4 +704,3 @@ function App(props) {
 
 // export default codePush(codePushOptions)(App);
 export default App;
-
