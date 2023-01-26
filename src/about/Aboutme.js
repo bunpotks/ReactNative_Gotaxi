@@ -1,20 +1,15 @@
 import React, {Component} from 'react';
 import {
-  Platform,
   StyleSheet,
   View,
-  Button,
   Image,
   StatusBar,
   TouchableOpacity,
-  Linking,
   ScrollView,
 } from 'react-native';
-import {Text, Title, Paragraph} from 'react-native-paper';
+import {Text, Title} from 'react-native-paper';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import IconZocial from 'react-native-vector-icons/Zocial';
-import Fontisto from 'react-native-vector-icons/Fontisto';
 
 import {SafeAreaView} from 'react-native-safe-area-context';
 
@@ -147,8 +142,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 5,
     shadowColor: '#000',
-    // borderColor:'black',
-    // borderWidth:0.1,
+
   },
 
 });
