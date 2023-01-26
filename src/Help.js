@@ -25,7 +25,6 @@ import CalendarConfig from './calendar/calendar';
 import AgendaScreen from './calendar/agendar';
 // import PDFExample from './pdf/pdfscreen';
 // import PDFExample from './pdf/pdfscreen';
-// import PDFExample from './pdf/pdfscreen';
 
 
 function Help() {
