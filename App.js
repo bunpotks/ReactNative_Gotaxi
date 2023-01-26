@@ -570,36 +570,7 @@ function App(props) {
     },
   });
 
-  const updatePosition = async (lat, lng) => {
-    let a = await AsyncStorage.getItem('@onTravel');
-    const login = await AsyncStorage.getItem('@login');
-    const loginUser = login ? JSON.parse(login) : undefined;
 
-    if (loginUser['gmm_emp_type'] == 'Taxi') {
-      $mode = 'updatePosition';
-    } else {
-      $mode = 'updatePositionCg';
-    }
-
-    const requestOptions = {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        key: $mode,
-        position: {latitude: lat, longitude: lng},
-        booking: {gmm_booking_nbr: a},
-      }),
-    };
-
-    fetch(url + 'monitor.php', requestOptions)
-      .then(response => response.json())
-      .then(response => {
-        console.log('updateposition', response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
 
   React.useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
@@ -702,5 +673,8 @@ function App(props) {
   );
 }
 
+/// switch this line to Use Codepush for Testing
+
 // export default codePush(codePushOptions)(App);
+
 export default App;

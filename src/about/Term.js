@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 import {
-  Platform,
   StyleSheet,
   View,
-  Button,
-  Image,
   StatusBar,
   TouchableOpacity,
 } from 'react-native';
