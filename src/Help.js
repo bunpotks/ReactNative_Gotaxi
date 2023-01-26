@@ -24,6 +24,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import CalendarConfig from './calendar/calendar';
 import AgendaScreen from './calendar/agendar';
 // import PDFExample from './pdf/pdfscreen';
+// import PDFExample from './pdf/pdfscreen';
+// import PDFExample from './pdf/pdfscreen';
+
 
 function Help() {
   const [expanded, setExpanded] = React.useState(true);
