@@ -898,7 +898,7 @@ const Monitor = props => {
 
       setimguri(oldArray => [...oldArray, baes64]);
     } else {
-      alert('ไม่สามารถเพิ่มรูปภาพได้เนื่องจากเกินจำนวนที่กำหนด');
+      alert('แจ้งเตือน','ไม่สามารถเพิ่มรูปภาพได้เนื่องจากเกินจำนวนที่กำหนด');
     }
   };
 
@@ -954,7 +954,7 @@ const Monitor = props => {
                 if (actionButton.allowButton) {
                   sendAcionConfirm();
                 } else {
-                  alert('ท่านสามารถเริ่มงานได้ก่อนเวลาเริ่มงาน 1 ชั่วโมง');
+                  alert('แจ้งเตือน','ท่านสามารถเริ่มงานได้ก่อนเวลาเริ่มงาน 1 ชั่วโมง');
                 }
               }}>
               {actionButton.gmm_product_button_message}
